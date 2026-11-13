@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aron Lauan — Data Engineer</title>
-  <meta name="description" content="Aron Lauan — Data Engineer in New York building production ETL pipelines, data quality frameworks, and BI dashboards." />
+  <title>Aron Lauan — Portfolio</title>
+  <meta name="description" content="Aron Lauan: Data Engineer in New York City." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
@@ -34,10 +34,11 @@
     <section id="home" class="hero container">
       <p class="eyebrow">Hi, I'm</p>
       <h1>Aron Lauan</h1>
-      <p class="lead">Data Engineer at <strong>Bloomberg</strong>. I build production ETL pipelines, data quality frameworks, and BI dashboards that turn raw provider data into reliable, client-ready products. Based in New York.</p>
+      <p class="lead">Currently a <strong>Senior Data Management Professional, Data Engineer</strong> at <strong>Bloomberg</strong>. Most of my work nowadays consists of ETL pipeline building for external provider data, data quality and governance, and automation. Based in New York City.</p>
       <div class="cta">
-        <a class="btn primary" href="#projects">View my work</a>
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+        <a class="btn primary" href="#experience">Experience</a>
+        <a class="btn primary" href="#projects">Projects</a>
+        <a class="btn primary" href="#contact">Contact Me</a>
       </div>
     </section>
 
@@ -61,7 +62,7 @@
     <section id="experience" class="container section">
       <h2>Experience</h2>
       <div class="tl-head">
-        <p class="exp-intro">Career above the line, education below. Starting with now. Scroll left to go back in time.</p>
+        <p class="exp-intro">Where I've been and when it was.</p>
         <div class="tl-nav" hidden>
           <button type="button" class="tl-btn" data-dir="-1" aria-label="Scroll back in time">‹</button>
           <button type="button" class="tl-btn" data-dir="1" aria-label="Scroll toward now">›</button>
@@ -92,11 +93,16 @@
                   <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
                   <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
                 </ul>
+                <ul class="page">
+                  <li><strong>Product Universe Index Generation:</strong> reusable ingestion frameworks that generate and onboard indices for specific product universes, with profiling and validation built in.</li>
+                  <li><strong>Pipeline Analytics Dashboard:</strong> utilities that turn pipeline logs into operational metrics, surfacing failure patterns and onboarding performance by provider.</li>
+                  <li><strong>Automated Config Generation:</strong> tooling that generates the JSON configs feeding pipeline microservices, using Claude Code and internal MCP servers.</li>
+                </ul>
               </div>
               <div class="card-foot">
                 <div class="pager" hidden>
                   <button type="button" class="pager-btn" data-step="-1" aria-label="Previous highlights">‹</button>
-                  <span class="pager-count" aria-live="polite">1 / 3</span>
+                  <span class="pager-count" aria-live="polite">1 / 4</span>
                   <button type="button" class="pager-btn" data-step="1" aria-label="Next highlights">›</button>
                 </div>
                 <div class="tags"><span>Python</span><span>SQL</span><span>AWS</span><span>Superset</span><span>Claude Code</span></div>
@@ -105,7 +111,7 @@
             <article class="tl-card" data-start="2022-08" data-end="2025-07">
               <h4>Data Engineer</h4>
               <p class="when">Aug 2022 — Jul 2025</p>
-              <p>Joined Bloomberg straight out of Rutgers and learned the ropes of enterprise data. I built the ETL pipelines and Python ingestion services that led to my promotion.</p>
+              <p>Joined Bloomberg my first summer after Rutgers. My first exposure to data engineering.</p>
             </article>
           </section>
 
@@ -114,7 +120,7 @@
             <article class="tl-card" data-start="2021-06" data-end="2021-08" data-min="11">
               <h4>Data Analyst Intern</h4>
               <p class="when">Jun 2021 — Aug 2021</p>
-              <p>A summer analyzing data at a global insurer, between semesters at Rutgers. It was my first real taste of turning raw data into answers a business could act on.</p>
+              <p>My first internship. Learned about the more technical side of data professions. Found out that the technical side is what I liked.</p>
             </article>
           </section>
 
@@ -123,7 +129,7 @@
             <article class="tl-card" data-start="2018-05" data-end="2019-08">
               <h4>Head Lifeguard</h4>
               <p class="when">May 2018 — Aug 2019</p>
-              <p>My first leadership role. I led a team of lifeguards and kept swimmers safe, from high school into college. I learned to stay calm and make quick calls under pressure.</p>
+              <p>Might be the best job I've ever had.</p>
             </article>
           </section>
 
@@ -137,7 +143,7 @@
             <article class="tl-card" data-start="2018-09" data-end="2022-05">
               <h4>B.S. Business Analytics &amp; Information Technology</h4>
               <p class="when">2018 — 2022</p>
-              <p>Where business questions met data, and where I found the path I'm still on.</p>
+              <p>Enrolled in the Rutgers Business School for undergrad, but wasn't even sure what business was.</p>
             </article>
           </section>
         </div>
@@ -146,22 +152,17 @@
 
     <!-- PROJECTS -->
     <section id="projects" class="container section">
-      <h2>Key technical work</h2>
+      <h2>Projects</h2>
+      <p class="section-intro">Things I've built on my own time: repos and live sites.</p>
       <div class="cards">
         <article class="card">
-          <h3>Product Universe Index Generation</h3>
-          <p>Led development of reusable ingestion frameworks that generate and onboard indices reflecting specific product universes for client-facing workflows. Data profiling and validation improved scalability, reliability, and onboarding accuracy.</p>
-          <div class="tags"><span>Python</span><span>Pandas</span><span>SQL</span><span>AWS</span><span>Schema Design</span></div>
-        </article>
-        <article class="card">
-          <h3>Pipeline Analytics Dashboard</h3>
-          <p>Built analytics utilities that aggregate pipeline logs into operational metrics for product and engineering teams, plus reporting workflows that surface failure patterns and measure onboarding performance by provider.</p>
-          <div class="tags"><span>Python</span><span>SQL</span><span>Apache Superset</span><span>REST APIs</span><span>Humio</span></div>
-        </article>
-        <article class="card">
-          <h3>Automated Config Generation</h3>
-          <p>Developed tooling that generates unique JSON configurations feeding custom microservices across data pipelines, using Claude Code and internal MCP servers to bring context to code safely and efficiently.</p>
-          <div class="tags"><span>Python</span><span>Claude Code</span><span>MCP Servers</span><span>Great Expectations</span></div>
+          <h3>FilmArbiter</h3>
+          <p>For when you really just need to pick a movie already. Choose 1–5 films you like and it finds the 3 that best match all of them, from a catalog of ~19k films built from IMDb and TMDB data. Each film becomes one weighted vector combining plot embeddings, themes, genres, and cast and crew.</p>
+          <div class="tags"><span>Python</span><span>FastAPI</span><span>Postgres</span><span>scikit-learn</span><span>React</span><span>TypeScript</span></div>
+          <div class="links">
+            <a href="https://filmarbiter.onrender.com" target="_blank" rel="noopener">Live site ↗</a>
+            <a href="https://github.com/aronlauan/filmarbiter" target="_blank" rel="noopener">Code ↗</a>
+          </div>
         </article>
       </div>
     </section>
@@ -179,12 +180,14 @@
 
     <!-- CONTACT -->
     <section id="contact" class="container section contact">
-      <h2>Let's talk</h2>
-      <p>Open to conversations about data engineering roles and projects. Email is the fastest way to reach me.</p>
+      <h2>What's up?</h2>
+      <p>Feel free to reach out. My preferred email is:</p>
       <a class="btn primary" href="mailto:aronnlauan@gmail.com">aronnlauan@gmail.com</a>
+      <p></p>
+      <p>You can also find me here:</p>
       <div class="socials">
         <a href="https://www.linkedin.com/in/aronlauan/" target="_blank" rel="noopener">LinkedIn</a>
-        <!-- Add your GitHub: <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub</a> -->
+        <a href="https://github.com/aronlauan" target="_blank" rel="noopener">GitHub</a>
       </div>
     </section>
   </main>

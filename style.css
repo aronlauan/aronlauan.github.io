@@ -95,6 +95,7 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 
 .tl-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: -16px 0 20px; }
 .exp-intro { color: var(--muted); }
+.section-intro { color: var(--muted); margin: -16px 0 20px; }
 .tl-nav[hidden] { display: none; }
 .tl-nav { display: flex; gap: 8px; flex: none; }
 .tl-btn {
@@ -188,7 +189,7 @@ h3 { font-size: 1.05rem; font-weight: 600; }
   .tl-scroll { scroll-behavior: auto; }
 }
 
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px; display: flex; flex-direction: column; gap: 12px;
