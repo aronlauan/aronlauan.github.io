@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aron Lauan — Data Engineer</title>
-  <meta name="description" content="Aron Lauan — Data Engineer in New York building production ETL pipelines, data quality frameworks, and BI dashboards." />
+  <title>Aron Lauan — Portfolio</title>
+  <meta name="description" content="Aron Lauan: Data Engineer in New York City." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script>
     try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -16,8 +16,9 @@
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="logo">AL</a>
-      <nav>
+      <a href="#home" class="logo">AL</a>
+      <nav aria-label="Sections">
+        <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
@@ -30,20 +31,15 @@
 
   <main id="top">
     <!-- HERO -->
-    <section class="hero container">
+    <section id="home" class="hero container">
       <p class="eyebrow">Hi, I'm</p>
       <h1>Aron Lauan</h1>
-      <p class="lead">Data Engineer at <strong>Bloomberg</strong>. I build production ETL pipelines, data quality frameworks, and BI dashboards that turn raw provider data into reliable, client-ready products. Based in New York.</p>
+      <p class="lead">Currently a <strong>Senior Data Management Professional, Data Engineer</strong> at <strong>Bloomberg</strong>. Most of my work nowadays consists of ETL pipeline building for external provider data, data quality and governance, and automation. Based in New York City.</p>
       <div class="cta">
-        <a class="btn primary" href="#projects">View my work</a>
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+        <a class="btn primary" href="#experience">Experience</a>
+        <a class="btn primary" href="#projects">Projects</a>
+        <a class="btn primary" href="#contact">Contact Me</a>
       </div>
-      <dl class="stats">
-        <div><dt>4+</dt><dd>years in data</dd></div>
-        <div><dt>6+</dt><dd>external data providers integrated</dd></div>
-        <div><dt>1M+</dt><dd>records processed &amp; validated</dd></div>
-        <div><dt>70K</dt><dd>annual dashboard users supported</dd></div>
-      </dl>
     </section>
 
     <!-- ABOUT -->
@@ -51,12 +47,12 @@
       <h2>About</h2>
       <div class="about-grid">
         <div>
-          <p>I'm a data professional with 4+ years of experience across data engineering, analytics, and reporting. I'm strongest in Python and SQL, and I care most about the unglamorous things that make data trustworthy: quality, governance, and pipelines that don't break.</p>
-          <p>At Bloomberg I own ingestion pipelines end to end — from onboarding new providers to the metrics that tell leadership how our data is doing. I also lead AI enablement for two data teams, standardizing how engineers use Claude Code, MCP servers, and hooks in their day-to-day work.</p>
+          <p>I'm a data professional with 4+ years of experience across data engineering and analytics. Always looking to explore new technologies and learn about anything.</p>
+          <p>In real life, I'd prefer to be outside and active. We can chat about that too.</p>
         </div>
         <ul class="facts">
           <li><span>Location</span>New York, NY</li>
-          <li><span>Focus</span>Data Engineering · Data Quality</li>
+          <li><span>Focus</span>Data Engineering · Data Analytics · Data Quality</li>
           <li><span>Education</span>Rutgers University, B.S.</li>
         </ul>
       </div>
@@ -65,49 +61,94 @@
     <!-- EXPERIENCE -->
     <section id="experience" class="container section">
       <h2>Experience</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">Aug 2022 — Present</div>
-          <div>
-            <h3>Data Engineer · <span class="org">Bloomberg LP</span></h3>
-            <ul>
-              <li>Engineered and maintain production ETL pipelines integrating datasets from 6+ external providers into client-facing data products.</li>
-              <li>Built production Python microservices that transform, validate, and load data across enterprise ingestion pipelines, handling datasets of 1M+ records.</li>
-              <li>Led data quality initiatives across accuracy, completeness, consistency, and timeliness — reducing operational defects and improving pipeline reliability.</li>
-              <li>Designed quarterly "State of Data" reports that automatically derive key product metrics (completeness, timeliness, breadth) for management.</li>
-              <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
-              <li>Oversee department-wide AI enablement, standardizing skills, MCPs, and hooks for 2 data teams.</li>
-              <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="when">2018 — 2022</div>
-          <div>
-            <h3>B.S. Business Analytics &amp; Information Technology · <span class="org">Rutgers University</span></h3>
-          </div>
-        </li>
-      </ol>
+      <p class="exp-intro">Where I've been and when it was.</p>
+
+      <!-- Vertical timeline, newest at the top: career on the left of the line, education on the right.
+           On desktop each item sits in a grid row (--row) so things that happened at the same time line up. -->
+      <div class="vt">
+        <span class="vt-head vt-career" aria-hidden="true">Career</span>
+        <span class="you-are-here" aria-hidden="true">You are here</span>
+        <span class="vt-head vt-edu" aria-hidden="true">Education</span>
+        <span class="vt-spine" aria-hidden="true"></span>
+
+        <!-- Both Bloomberg roles share one company panel -->
+        <section class="vt-group vt-career" data-zone="bloomberg" style="--row: 2; --span: 3">
+          <header class="vt-group-head"><h3>Bloomberg LP</h3><span>Aug 2022 – Now</span></header>
+          <article class="vt-card current">
+            <h4>Senior Data Management Professional, Data Engineer</h4>
+            <p class="when stamp">Jul 2025 — Present</p>
+                  <div class="pages">
+                    <ul class="page active">
+                      <li>Engineered and maintain production ETL pipelines integrating datasets from 6+ external providers into client-facing data products.</li>
+                      <li>Built production Python microservices that transform, validate, and load data across enterprise ingestion pipelines, handling datasets of 1M+ records.</li>
+                      <li>Oversee department-wide AI enablement, standardizing skills, MCPs, and hooks for 2 data teams.</li>
+                    </ul>
+                    <ul class="page">
+                      <li>Led data quality initiatives across accuracy, completeness, consistency, and timeliness — reducing operational defects and improving pipeline reliability.</li>
+                      <li>Designed quarterly "State of Data" reports that automatically derive key product metrics (completeness, timeliness, breadth) for management.</li>
+                    </ul>
+                    <ul class="page">
+                      <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
+                      <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
+                    </ul>
+                    <ul class="page">
+                      <li><strong>Product Universe Index Generation:</strong> reusable ingestion frameworks that generate and onboard indices for specific product universes, with profiling and validation built in.</li>
+                      <li><strong>Pipeline Analytics Dashboard:</strong> utilities that turn pipeline logs into operational metrics, surfacing failure patterns and onboarding performance by provider.</li>
+                      <li><strong>Automated Config Generation:</strong> tooling that generates the JSON configs feeding pipeline microservices, using Claude Code and internal MCP servers.</li>
+                    </ul>
+                  </div>
+                  <div class="card-foot">
+                    <div class="pager" hidden>
+                      <button type="button" class="pager-btn" data-step="-1" aria-label="Previous highlights">‹</button>
+                      <span class="pager-count" aria-live="polite">1 / 4</span>
+                      <button type="button" class="pager-btn" data-step="1" aria-label="Next highlights">›</button>
+                    </div>
+                    <div class="tags"><span>Python</span><span>SQL</span><span>AWS</span><span>Superset</span><span>Claude Code</span></div>
+                  </div>
+          </article>
+          <article class="vt-card">
+            <h4>Data Engineer</h4>
+            <p class="when stamp">Aug 2022 — Jul 2025</p>
+            <p>Joined Bloomberg my first summer after Rutgers. My first exposure to data engineering.</p>
+          </article>
+        </section>
+
+        <article class="vt-card vt-career" data-zone="chubb" style="--row: 5">
+          <p class="org">Chubb</p>
+          <h4>Data Analyst Intern</h4>
+          <p class="when stamp">Jun 2021 — Aug 2021</p>
+          <p>My first internship. Learned about the more technical side of data professions. Found out that the technical side is what I liked.</p>
+        </article>
+
+        <article class="vt-card vt-edu" data-zone="rutgers" style="--row: 5; --span: 2">
+          <p class="org">Rutgers University</p>
+          <h4>B.S. Business Analytics &amp; Information Technology</h4>
+          <p class="when stamp">2018 — 2022</p>
+          <p>Enrolled in the Rutgers Business School for undergrad, but wasn't even sure what business was.</p>
+        </article>
+
+        <article class="vt-card vt-career" data-zone="pools" style="--row: 6">
+          <p class="org">American Pools</p>
+          <h4>Head Lifeguard</h4>
+          <p class="when stamp">May 2018 — Aug 2019</p>
+          <p>Might be the best job I've ever had.</p>
+        </article>
+      </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="container section">
-      <h2>Key technical work</h2>
+      <h2>Projects</h2>
+      <p class="section-intro">Things I've built on my own time: repos and live sites.</p>
       <div class="cards">
         <article class="card">
-          <h3>Product Universe Index Generation</h3>
-          <p>Led development of reusable ingestion frameworks that generate and onboard indices reflecting specific product universes for client-facing workflows. Data profiling and validation improved scalability, reliability, and onboarding accuracy.</p>
-          <div class="tags"><span>Python</span><span>Pandas</span><span>SQL</span><span>AWS</span><span>Schema Design</span></div>
-        </article>
-        <article class="card">
-          <h3>Pipeline Analytics Dashboard</h3>
-          <p>Built analytics utilities that aggregate pipeline logs into operational metrics for product and engineering teams, plus reporting workflows that surface failure patterns and measure onboarding performance by provider.</p>
-          <div class="tags"><span>Python</span><span>SQL</span><span>Apache Superset</span><span>REST APIs</span><span>Humio</span></div>
-        </article>
-        <article class="card">
-          <h3>Automated Config Generation</h3>
-          <p>Developed tooling that generates unique JSON configurations feeding custom microservices across data pipelines, using Claude Code and internal MCP servers to bring context to code safely and efficiently.</p>
-          <div class="tags"><span>Python</span><span>Claude Code</span><span>MCP Servers</span><span>Great Expectations</span></div>
+          <h3>FilmArbiter</h3>
+          <p>For when you really just need to pick a movie already. Choose 1–5 films you like and it finds the 3 that best match all of them, from a catalog of ~19k films built from IMDb and TMDB data. Each film becomes one weighted vector combining plot embeddings, themes, genres, and cast and crew.</p>
+          <div class="tags"><span>Python</span><span>FastAPI</span><span>Postgres</span><span>scikit-learn</span><span>React</span><span>TypeScript</span></div>
+          <div class="links">
+            <a href="https://filmarbiter.onrender.com" target="_blank" rel="noopener">Live site ↗</a>
+            <a href="https://github.com/aronlauan/filmarbiter" target="_blank" rel="noopener">Code ↗</a>
+          </div>
         </article>
       </div>
     </section>
@@ -125,12 +166,14 @@
 
     <!-- CONTACT -->
     <section id="contact" class="container section contact">
-      <h2>Let's talk</h2>
-      <p>Open to conversations about data engineering roles and projects. Email is the fastest way to reach me.</p>
+      <h2>What's up?</h2>
+      <p>Feel free to reach out. My preferred email is:</p>
       <a class="btn primary" href="mailto:aronnlauan@gmail.com">aronnlauan@gmail.com</a>
+      <p></p>
+      <p>You can also find me here:</p>
       <div class="socials">
         <a href="https://www.linkedin.com/in/aronlauan/" target="_blank" rel="noopener">LinkedIn</a>
-        <!-- Add your GitHub: <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub</a> -->
+        <a href="https://github.com/aronlauan" target="_blank" rel="noopener">GitHub</a>
       </div>
     </section>
   </main>

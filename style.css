@@ -4,29 +4,37 @@
   --text: #1a1a1a;
   --muted: #5f6368;
   --border: #e6e6e3;
-  --accent: #2f5bea;
-  --accent-soft: #eaf0ff;
+  --accent: #1f6b45;
+  --accent-soft: #e6f2eb;
+  --on-accent: #ffffff;
+  --z-bloomberg: #c2410c;
+  --z-chubb: #4f46e5;
+  --z-rutgers: #c8102e;
+  --z-pools: #0e7490;
   --radius: 14px;
   --max: 960px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1012; --surface: #17181b; --text: #ececec; --muted: #a0a4ab;
-    --border: #2a2c31; --accent: #7c9cff; --accent-soft: #1c2440;
+    --border: #2a2c31; --accent: #5fbf8a; --accent-soft: #15291f; --on-accent: #0f1012;
+    --z-bloomberg: #f59e5b; --z-chubb: #9b9cfb; --z-rutgers: #f2667a; --z-pools: #3cc6e3;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1012; --surface: #17181b; --text: #ececec; --muted: #a0a4ab;
-  --border: #2a2c31; --accent: #7c9cff; --accent-soft: #1c2440;
+  --border: #2a2c31; --accent: #5fbf8a; --accent-soft: #15291f; --on-accent: #0f1012;
+    --z-bloomberg: #f59e5b; --z-chubb: #9b9cfb; --z-rutgers: #f2667a; --z-pools: #3cc6e3;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Averia Serif Libre", Georgia, serif;
   background: var(--bg); color: var(--text);
   line-height: 1.6; -webkit-font-smoothing: antialiased;
 }
+button, input, select, textarea { font: inherit; } /* form controls don't inherit the page font by default */
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
@@ -59,7 +67,7 @@ h1 { font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.05; letter-spacing: -
   border: 1px solid var(--border); color: var(--text); font-weight: 500; background: var(--surface);
 }
 .btn:hover { text-decoration: none; border-color: var(--accent); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn.primary:hover { filter: brightness(1.08); }
 
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
@@ -79,14 +87,103 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 .facts li { display: flex; flex-direction: column; font-weight: 500; }
 .facts span { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 500; }
 
-.timeline { list-style: none; display: grid; gap: 32px; }
-.timeline > li { display: grid; grid-template-columns: 160px 1fr; gap: 24px; }
-.when { color: var(--muted); font-size: .9rem; padding-top: 2px; }
-.org { color: var(--muted); font-weight: 500; }
-.timeline ul { margin: 8px 0 0 18px; color: var(--muted); }
-.timeline ul li { margin-top: 4px; }
+/* Experience: vertical timeline, newest at the top. Career left of the line, education right. */
+[data-zone="bloomberg"] { --zone: var(--z-bloomberg); }
+[data-zone="chubb"] { --zone: var(--z-chubb); }
+[data-zone="rutgers"] { --zone: var(--z-rutgers); }
+[data-zone="pools"] { --zone: var(--z-pools); }
 
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.exp-intro { color: var(--muted); margin: -16px 0 28px; }
+.section-intro { color: var(--muted); margin: -16px 0 20px; }
+
+.vt { display: grid; gap: 18px; }
+@media (min-width: 721px) {
+  .vt { grid-template-columns: 1fr 76px 1fr; column-gap: 0; }
+  .vt > * { grid-row: var(--row) / span var(--span, 1); }
+  .vt-career { grid-column: 1; }
+  .vt-edu { grid-column: 3; }
+  .you-are-here, .vt-spine { grid-column: 2; }
+}
+
+/* Column headings + "You are here" at the top of the line */
+.vt-head {
+  --row: 1; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); align-self: end;
+}
+.vt-head.vt-career { justify-self: end; margin-right: 4px; }
+.vt-head.vt-edu { margin-left: 4px; }
+.you-are-here {
+  --row: 1; justify-self: center; align-self: end;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: .68rem; font-weight: 700; color: var(--accent); white-space: nowrap;
+}
+.you-are-here::after {
+  content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); animation: ping 2s ease-out infinite;
+}
+@keyframes ping { to { box-shadow: 0 0 0 10px transparent; } }
+
+/* The line down the middle */
+.vt-spine { --row: 2; --span: 5; justify-self: center; width: 2px; background: var(--border); }
+/* Each card's date range is a stamp sitting on its top edge, on the corner facing the line */
+.vt-card { position: relative; }
+.vt-card .stamp {
+  position: absolute; top: 0; transform: translateY(-55%); z-index: 1; margin: 0; white-space: nowrap;
+  background: var(--bg); border: 1px solid var(--zone); border-radius: 999px;
+  padding: 1px 9px; font-size: .72rem; font-weight: 700; color: var(--zone); font-variant-numeric: tabular-nums;
+}
+@media (min-width: 721px) {
+  .vt-career .stamp { right: 14px; }
+  .vt-edu .stamp { left: 14px; }
+}
+
+/* Cards */
+.vt-card {
+  background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--zone);
+  border-radius: 10px; padding: 14px 16px; min-width: 0; align-self: start;
+}
+.vt-card.current { border-color: var(--zone); box-shadow: 0 0 0 3px color-mix(in srgb, var(--zone) 18%, transparent); }
+.org { color: var(--zone); font-weight: 700; font-size: .9rem; }
+.vt-card h4 { font-size: .95rem; font-weight: 600; line-height: 1.35; }
+.vt-card > p:not(.when):not(.org) { color: var(--muted); margin-top: 6px; font-size: .88rem; line-height: 1.55; }
+.vt-card ul { margin: 6px 0 0 16px; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+.vt-card ul li { margin-top: 3px; }
+.card-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.card-foot .pager { margin-top: 0; }
+.card-foot .tags span { font-size: .72rem; padding: 2px 8px; }
+.when { color: var(--muted); font-size: .8rem; margin-top: 1px; }
+
+/* A company panel groups several roles at one employer. On desktop it borrows the timeline's rows
+   (subgrid), so each role still lines up with its year marker. */
+.vt-group {
+  display: grid; gap: 18px; align-content: start;
+  border: 1px solid color-mix(in srgb, var(--zone) 45%, transparent); border-radius: var(--radius);
+  background: color-mix(in srgb, var(--zone) 7%, var(--bg)); padding: 12px;
+}
+@media (min-width: 721px) { .vt-group { grid-template-rows: subgrid; } }
+.vt-group-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 10px; padding: 0 4px; }
+.vt-group-head h3 { font-size: 1rem; color: var(--zone); }
+.vt-group-head span { color: var(--muted); font-size: .8rem; font-weight: 500; }
+
+/* Paginated highlights: pages share one grid cell, so the panel keeps the height of its tallest page */
+.tabbed .pages { display: grid; }
+.tabbed .page { grid-area: 1 / 1; visibility: hidden; opacity: 0; transform: translateX(12px); transition: opacity .25s, transform .25s, visibility .25s; }
+.tabbed .page.active { visibility: visible; opacity: 1; transform: none; }
+.pager[hidden] { display: none; }
+.pager { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+.pager-btn {
+  width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 1.05rem; line-height: 1;
+  background: none; border: 1px solid var(--border); color: var(--text);
+}
+.pager-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.pager-btn:disabled { opacity: .35; cursor: default; }
+.pager-count { color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) {
+  .tabbed .page { transition: none; transform: none; }
+  .you-are-here::after { animation: none; }
+}
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px; display: flex; flex-direction: column; gap: 12px;
@@ -106,18 +203,34 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 
 .footer { padding: 40px 24px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
 
-/* Reveal on scroll */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
-.reveal.visible { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+/* Tabs: one section visible at a time, sliding side to side */
+main { overflow-x: clip; }
+.tabbed main > section[hidden] { display: none; }
+.tabbed .section { border-top: 0; }
+.tabbed main { min-height: calc(100vh - 160px); }
+.enter-right { animation: in-right .35s ease both; }
+.enter-left  { animation: in-left  .35s ease both; }
+@keyframes in-right { from { opacity: 0; transform: translateX(40px); } }
+@keyframes in-left  { from { opacity: 0; transform: translateX(-40px); } }
+@media (prefers-reduced-motion: reduce) { .enter-right, .enter-left { animation: none; } }
 
 /* Mobile */
 @media (max-width: 720px) {
   .container { padding: 0 16px; }
-  .nav nav { display: none; }
-  .icon-btn { margin-left: auto; }
+  .nav-inner { gap: 14px; }
+  .nav nav {
+    flex: 1; min-width: 0; gap: 16px; overflow-x: auto; white-space: nowrap;
+    scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+  .nav nav::-webkit-scrollbar { display: none; }
+  .icon-btn { flex: none; }
   .hero { padding: 80px 16px 56px; }
   .section { padding: 56px 16px; }
-  .about-grid, .timeline > li { grid-template-columns: 1fr; gap: 8px; }
-  .about-grid { gap: 28px; }
+  .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  /* Timeline: one column, with the line down the left edge */
+  .vt { border-left: 2px solid var(--border); padding-left: 18px; margin-left: 6px; gap: 16px; }
+  .vt-head, .vt-spine { display: none; }
+  .vt-card .stamp { right: 14px; }
+  .you-are-here { flex-direction: row-reverse; justify-self: start; margin-left: -25px; }
+  .vt-card { padding: 13px 14px; }
 }
