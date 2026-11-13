@@ -7,7 +7,7 @@
   <meta name="description" content="Aron Lauan — Data Engineer in New York building production ETL pipelines, data quality frameworks, and BI dashboards." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script>
     try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -16,8 +16,9 @@
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="logo">AL</a>
-      <nav>
+      <a href="#home" class="logo">AL</a>
+      <nav aria-label="Sections">
+        <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
@@ -30,7 +31,7 @@
 
   <main id="top">
     <!-- HERO -->
-    <section class="hero container">
+    <section id="home" class="hero container">
       <p class="eyebrow">Hi, I'm</p>
       <h1>Aron Lauan</h1>
       <p class="lead">Data Engineer at <strong>Bloomberg</strong>. I build production ETL pipelines, data quality frameworks, and BI dashboards that turn raw provider data into reliable, client-ready products. Based in New York.</p>
@@ -65,29 +66,88 @@
     <!-- EXPERIENCE -->
     <section id="experience" class="container section">
       <h2>Experience</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">Aug 2022 — Present</div>
-          <div>
-            <h3>Data Engineer · <span class="org">Bloomberg LP</span></h3>
-            <ul>
-              <li>Engineered and maintain production ETL pipelines integrating datasets from 6+ external providers into client-facing data products.</li>
-              <li>Built production Python microservices that transform, validate, and load data across enterprise ingestion pipelines, handling datasets of 1M+ records.</li>
-              <li>Led data quality initiatives across accuracy, completeness, consistency, and timeliness — reducing operational defects and improving pipeline reliability.</li>
-              <li>Designed quarterly "State of Data" reports that automatically derive key product metrics (completeness, timeliness, breadth) for management.</li>
-              <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
-              <li>Oversee department-wide AI enablement, standardizing skills, MCPs, and hooks for 2 data teams.</li>
-              <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
-            </ul>
+      <div class="tl-head">
+        <p class="exp-intro">Career above the line, education below. Starting with now. Scroll left to go back in time.</p>
+        <div class="tl-nav" hidden>
+          <button type="button" class="tl-btn" data-dir="-1" aria-label="Scroll back in time">‹</button>
+          <button type="button" class="tl-btn" data-dir="1" aria-label="Scroll toward now">›</button>
+        </div>
+      </div>
+
+      <!-- Horizontal timeline: one grid column per month, oldest on the left. Career sits above the
+           year bar, education below. script.js places each group and card by data-start / data-end. -->
+      <div class="tl-scroll" tabindex="0" aria-label="Experience timeline, oldest to newest">
+        <div class="tl">
+
+          <section class="group lane-career" data-zone="bloomberg" data-start="2022-08" data-end="now">
+            <header class="group-head"><h3>Bloomberg LP</h3><span>Aug 2022 – Now</span></header>
+            <article class="tl-card current" data-start="2025-07" data-end="now">
+              <h4>Senior Data Management Professional, Data Engineer</h4>
+              <p class="when">Jul 2025 — Present</p>
+              <div class="pages">
+                <ul class="page active">
+                  <li>Engineered and maintain production ETL pipelines integrating datasets from 6+ external providers into client-facing data products.</li>
+                  <li>Built production Python microservices that transform, validate, and load data across enterprise ingestion pipelines, handling datasets of 1M+ records.</li>
+                  <li>Oversee department-wide AI enablement, standardizing skills, MCPs, and hooks for 2 data teams.</li>
+                </ul>
+                <ul class="page">
+                  <li>Led data quality initiatives across accuracy, completeness, consistency, and timeliness — reducing operational defects and improving pipeline reliability.</li>
+                  <li>Designed quarterly "State of Data" reports that automatically derive key product metrics (completeness, timeliness, breadth) for management.</li>
+                </ul>
+                <ul class="page">
+                  <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
+                  <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
+                </ul>
+              </div>
+              <div class="card-foot">
+                <div class="pager" hidden>
+                  <button type="button" class="pager-btn" data-step="-1" aria-label="Previous highlights">‹</button>
+                  <span class="pager-count" aria-live="polite">1 / 3</span>
+                  <button type="button" class="pager-btn" data-step="1" aria-label="Next highlights">›</button>
+                </div>
+                <div class="tags"><span>Python</span><span>SQL</span><span>AWS</span><span>Superset</span><span>Claude Code</span></div>
+              </div>
+            </article>
+            <article class="tl-card" data-start="2022-08" data-end="2025-07">
+              <h4>Data Engineer</h4>
+              <p class="when">Aug 2022 — Jul 2025</p>
+              <p>Joined Bloomberg straight out of Rutgers and learned the ropes of enterprise data. I built the ETL pipelines and Python ingestion services that led to my promotion.</p>
+            </article>
+          </section>
+
+          <section class="group lane-career" data-zone="chubb" data-start="2021-06" data-end="2021-08" data-min="11">
+            <header class="group-head"><h3>Chubb</h3><span>Summer 2021</span></header>
+            <article class="tl-card" data-start="2021-06" data-end="2021-08" data-min="11">
+              <h4>Data Analyst Intern</h4>
+              <p class="when">Jun 2021 — Aug 2021</p>
+              <p>A summer analyzing data at a global insurer, between semesters at Rutgers. It was my first real taste of turning raw data into answers a business could act on.</p>
+            </article>
+          </section>
+
+          <section class="group lane-career" data-zone="pools" data-start="2018-05" data-end="2019-08">
+            <header class="group-head"><h3>American Pools</h3><span>May 2018 – Aug 2019</span></header>
+            <article class="tl-card" data-start="2018-05" data-end="2019-08">
+              <h4>Head Lifeguard</h4>
+              <p class="when">May 2018 — Aug 2019</p>
+              <p>My first leadership role. I led a team of lifeguards and kept swimmers safe, from high school into college. I learned to stay calm and make quick calls under pressure.</p>
+            </article>
+          </section>
+
+          <div class="tl-years" aria-hidden="true">
+            <span class="you-are-here">You are here</span>
           </div>
-        </li>
-        <li>
-          <div class="when">2018 — 2022</div>
-          <div>
-            <h3>B.S. Business Analytics &amp; Information Technology · <span class="org">Rutgers University</span></h3>
-          </div>
-        </li>
-      </ol>
+
+
+          <section class="group lane-edu" data-zone="rutgers" data-start="2018-09" data-end="2022-05">
+            <header class="group-head"><h3>Rutgers University</h3><span>2018 – 2022</span></header>
+            <article class="tl-card" data-start="2018-09" data-end="2022-05">
+              <h4>B.S. Business Analytics &amp; Information Technology</h4>
+              <p class="when">2018 — 2022</p>
+              <p>Where business questions met data, and where I found the path I'm still on.</p>
+            </article>
+          </section>
+        </div>
+      </div>
     </section>
 
     <!-- PROJECTS -->
