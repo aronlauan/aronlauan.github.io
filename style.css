@@ -87,88 +87,83 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 .facts li { display: flex; flex-direction: column; font-weight: 500; }
 .facts span { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 500; }
 
-/* Experience: horizontal timeline, oldest on the left, now on the right. One grid column per month. */
+/* Experience: vertical timeline, newest at the top. Career left of the line, education right. */
 [data-zone="bloomberg"] { --zone: var(--z-bloomberg); }
 [data-zone="chubb"] { --zone: var(--z-chubb); }
 [data-zone="rutgers"] { --zone: var(--z-rutgers); }
 [data-zone="pools"] { --zone: var(--z-pools); }
 
-.tl-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: -16px 0 20px; }
-.exp-intro { color: var(--muted); }
+.exp-intro { color: var(--muted); margin: -16px 0 28px; }
 .section-intro { color: var(--muted); margin: -16px 0 20px; }
-.tl-nav[hidden] { display: none; }
-.tl-nav { display: flex; gap: 8px; flex: none; }
-.tl-btn {
-  width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; line-height: 1;
-  background: var(--surface); border: 1px solid var(--border); color: var(--text);
-}
-.tl-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-.tl-btn:disabled { opacity: .35; cursor: default; }
 
-.tl-scroll {
-  /* full-bleed: scroll edge to edge, but start aligned with the page content */
-  margin-inline: calc(50% - 50vw); padding-inline: calc(50vw - 50%);
-  overflow-x: auto; overscroll-behavior-x: contain; scroll-behavior: smooth;
-  padding-block: 4px 16px; outline: none;
-  scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+.vt { display: grid; gap: 18px; }
+@media (min-width: 721px) {
+  .vt { grid-template-columns: 1fr 76px 1fr; column-gap: 0; }
+  .vt > * { grid-row: var(--row) / span var(--span, 1); }
+  .vt-career { grid-column: 1; }
+  .vt-edu { grid-column: 3; }
+  .you-are-here, .vt-spine { grid-column: 2; }
 }
-.tl-scroll:focus-visible { box-shadow: 0 0 0 2px var(--accent); border-radius: var(--radius); }
-.tl { display: grid; gap: 10px; }
-.tabbed .tl { --m: 30px; grid-template-columns: repeat(var(--n, 1), var(--m)); column-gap: 0; width: max-content; }
 
-/* Year bar across the top */
-.tl-years { display: none; }
-.tabbed .tl-years { display: contents; }
-.tl-year {
-  grid-row: 2; position: relative; border-left: 1px solid var(--border);
-  padding: 18px 0 3px 8px; font-size: .75rem; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums;
+/* Column headings + "You are here" at the top of the line */
+.vt-head {
+  --row: 1; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); align-self: end;
 }
-.tl-year::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; border-bottom: 2px solid var(--border); }
+.vt-head.vt-career { justify-self: end; margin-right: 4px; }
+.vt-head.vt-edu { margin-left: 4px; }
 .you-are-here {
-  grid-row: 2; grid-column: span 10 / -1; align-self: start; justify-self: end; z-index: 1;
-  display: inline-flex; flex-direction: row-reverse; align-items: center; gap: 8px; margin-right: 4px;
-  font-size: .7rem; font-weight: 700; color: var(--accent); white-space: nowrap;
+  --row: 1; justify-self: center; align-self: end;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: .68rem; font-weight: 700; color: var(--accent); white-space: nowrap;
 }
-.you-are-here::before {
-  content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
+.you-are-here::after {
+  content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
   box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); animation: ping 2s ease-out infinite;
 }
 @keyframes ping { to { box-shadow: 0 0 0 10px transparent; } }
 
-/* Rows: career above the year bar, education below it */
-.tabbed .group.lane-career { grid-row: 1; align-self: end; }
-.tabbed .group.lane-edu { grid-row: 3; align-self: start; }
-
-/* A group encloses everything at one organization; it reuses the month columns (subgrid)
-   so the roles inside it line up with the year bar. */
-.group {
-  border: 2px solid color-mix(in srgb, var(--zone) 50%, transparent); border-radius: var(--radius);
-  background: color-mix(in srgb, var(--zone) 6%, var(--bg));
-  padding: 10px 0; margin: 0 4px;
+/* The line down the middle */
+.vt-spine { --row: 2; --span: 5; justify-self: center; width: 2px; background: var(--border); }
+/* Each card's date range is a stamp sitting on its top edge, on the corner facing the line */
+.vt-card { position: relative; }
+.vt-card .stamp {
+  position: absolute; top: 0; transform: translateY(-55%); z-index: 1; margin: 0; white-space: nowrap;
+  background: var(--bg); border: 1px solid var(--zone); border-radius: 999px;
+  padding: 1px 9px; font-size: .72rem; font-weight: 700; color: var(--zone); font-variant-numeric: tabular-nums;
 }
-.tabbed .group { display: grid; grid-template-columns: subgrid; grid-auto-rows: auto; row-gap: 8px; align-content: start; }
-.group-head { grid-column: 1 / -1; display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 10px; padding: 0 12px; }
-/* Keep a group's name in view while its box is partly scrolled off the left edge.
-   Sticky offsets count from inside the scroller's padding, so 0 lines up with the page content. */
-.tabbed .group-head { justify-self: start; position: sticky; left: 0; }
-.group-head h3 { font-size: .98rem; color: var(--zone); }
-.group-head span { color: var(--muted); font-size: .78rem; font-weight: 500; }
-.tabbed .group > .tl-card { grid-row: 2; }
-
-.tl-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-  padding: 11px 14px; margin: 0 8px; min-width: 0;
+@media (min-width: 721px) {
+  .vt-career .stamp { right: 14px; }
+  .vt-edu .stamp { left: 14px; }
 }
-.tl-card.current { border-color: var(--zone); box-shadow: 0 0 0 3px color-mix(in srgb, var(--zone) 18%, transparent); }
-.tl-card h4 { font-size: .9rem; font-weight: 600; line-height: 1.35; }
-.tl-card > p:not(.when) { color: var(--muted); margin-top: 6px; max-width: 560px; font-size: .84rem; line-height: 1.5; }
-.tl-card ul { margin: 6px 0 0 16px; color: var(--muted); font-size: .84rem; line-height: 1.5; }
-.tl-card ul li { margin-top: 3px; }
-.card-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
+/* Cards */
+.vt-card {
+  background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--zone);
+  border-radius: 10px; padding: 14px 16px; min-width: 0; align-self: start;
+}
+.vt-card.current { border-color: var(--zone); box-shadow: 0 0 0 3px color-mix(in srgb, var(--zone) 18%, transparent); }
+.org { color: var(--zone); font-weight: 700; font-size: .9rem; }
+.vt-card h4 { font-size: .95rem; font-weight: 600; line-height: 1.35; }
+.vt-card > p:not(.when):not(.org) { color: var(--muted); margin-top: 6px; font-size: .88rem; line-height: 1.55; }
+.vt-card ul { margin: 6px 0 0 16px; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+.vt-card ul li { margin-top: 3px; }
+.card-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .card-foot .pager { margin-top: 0; }
 .card-foot .tags span { font-size: .72rem; padding: 2px 8px; }
+.when { color: var(--muted); font-size: .8rem; margin-top: 1px; }
 
-.when { color: var(--muted); font-size: .76rem; margin-top: 1px; }
+/* A company panel groups several roles at one employer. On desktop it borrows the timeline's rows
+   (subgrid), so each role still lines up with its year marker. */
+.vt-group {
+  display: grid; gap: 18px; align-content: start;
+  border: 1px solid color-mix(in srgb, var(--zone) 45%, transparent); border-radius: var(--radius);
+  background: color-mix(in srgb, var(--zone) 7%, var(--bg)); padding: 12px;
+}
+@media (min-width: 721px) { .vt-group { grid-template-rows: subgrid; } }
+.vt-group-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 10px; padding: 0 4px; }
+.vt-group-head h3 { font-size: 1rem; color: var(--zone); }
+.vt-group-head span { color: var(--muted); font-size: .8rem; font-weight: 500; }
 
 /* Paginated highlights: pages share one grid cell, so the panel keeps the height of its tallest page */
 .tabbed .pages { display: grid; }
@@ -185,8 +180,7 @@ h3 { font-size: 1.05rem; font-weight: 600; }
 .pager-count { color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) {
   .tabbed .page { transition: none; transform: none; }
-  .you-are-here::before { animation: none; }
-  .tl-scroll { scroll-behavior: auto; }
+  .you-are-here::after { animation: none; }
 }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
@@ -233,8 +227,10 @@ main { overflow-x: clip; }
   .hero { padding: 80px 16px 56px; }
   .section { padding: 56px 16px; }
   .about-grid { grid-template-columns: 1fr; gap: 28px; }
-  /* Timeline: narrower months, and the controls drop below the intro */
-  .tabbed .tl { --m: 20px; }
-  .tl-head { flex-wrap: wrap; }
-  .tl-card { padding: 14px; }
+  /* Timeline: one column, with the line down the left edge */
+  .vt { border-left: 2px solid var(--border); padding-left: 18px; margin-left: 6px; gap: 16px; }
+  .vt-head, .vt-spine { display: none; }
+  .vt-card .stamp { right: 14px; }
+  .you-are-here { flex-direction: row-reverse; justify-self: start; margin-left: -25px; }
+  .vt-card { padding: 13px 14px; }
 }

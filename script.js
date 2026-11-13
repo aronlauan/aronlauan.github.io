@@ -62,77 +62,13 @@ document.querySelectorAll('.pages').forEach((wrap) => {
   go(0);
 });
 
-// Experience timeline: one grid column per month, oldest on the left and now on the right.
-// Each group/card is placed by its dates (cards relative to their group, via CSS subgrid).
-// It opens scrolled to the right end, so the current role is what you see first.
-const tl = document.querySelector('.tl');
-if (tl) {
-  const month = (s) => { if (s === 'now') { const d = new Date(); return d.getFullYear() * 12 + d.getMonth(); }
-    const [y, m] = s.split('-').map(Number); return y * 12 + m - 1; };
-  const now = month('now'), first = month('2018-05');
-  const col = (m) => m - first + 1;
-  tl.style.setProperty('--n', col(now));
-
-  const span = (el) => {
-    let a = col(month(el.dataset.start)), b = col(month(el.dataset.end)) + 1;
-    const min = +el.dataset.min || 0;                    // short stints get room for their text
-    if (b - a < min) { const pad = Math.ceil((min - (b - a)) / 2); a -= pad; b += pad; }
-    return [a, b];
-  };
-  const place = (el, parentStart = 1) => {
-    const [a, b] = span(el);
-    el.style.gridColumn = `${a - parentStart + 1} / ${b - parentStart + 1}`;
-    el.querySelectorAll(':scope > [data-start]').forEach((child) => place(child, a));
-  };
-  tl.querySelectorAll(':scope > [data-start]').forEach((g) => place(g));
-
-  // Year bar: one cell per year, 2018 → now
-  const years = tl.querySelector('.tl-years');
-  for (let y = 2018; y <= new Date().getFullYear(); y++) {
-    const a = col(Math.max(first, y * 12)), b = col(Math.min(now, y * 12 + 11)) + 1;
-    const cell = document.createElement('span');
-    cell.className = 'tl-year';
-    cell.style.gridColumn = `${a} / ${b}`;
-    cell.textContent = y;
-    years.append(cell);
-  }
-
-  // Arrow buttons scroll by most of a screen; ‹ goes back in time, › toward now
-  const scroller = document.querySelector('.tl-scroll');
-  const nav = document.querySelector('.tl-nav');
-  const [back, fwd] = nav.querySelectorAll('.tl-btn');
-  const sync = () => {
-    back.disabled = scroller.scrollLeft < 4;
-    fwd.disabled = scroller.scrollLeft + scroller.clientWidth > scroller.scrollWidth - 4;
-  };
-  nav.querySelectorAll('.tl-btn').forEach((b) => b.addEventListener('click', () =>
-    scroller.scrollBy({ left: +b.dataset.dir * scroller.clientWidth * 0.8 })));
-  scroller.addEventListener('scroll', sync, { passive: true });
-  addEventListener('resize', sync);
-  nav.hidden = false;
-
-  // Open at "now" (right end). Hidden tabs lose their scroll position, so remember where
-  // the visitor left it and put it back whenever the Experience tab is shown again.
-  let saved = null;                                       // null = the right end
-  scroller.addEventListener('scroll', () => { if (current === 'experience') saved = scroller.scrollLeft; }, { passive: true });
-  const restore = () => {
-    if (current !== 'experience') return;
-    scroller.style.scrollBehavior = 'auto';
-    scroller.scrollLeft = saved ?? scroller.scrollWidth;
-    scroller.style.scrollBehavior = '';
-    sync();
-  };
-  addEventListener('hashchange', () => requestAnimationFrame(restore));
-  requestAnimationFrame(restore);
-}
-
 addEventListener('hashchange', () => show(location.hash.slice(1)));
 show(location.hash.slice(1));
 
 // Left/right arrow keys switch tabs
 addEventListener('keydown', (e) => {
   if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
-  if (e.target.closest('input, textarea, select, [contenteditable], .tl-scroll')) return;
+  if (e.target.closest('input, textarea, select, [contenteditable]')) return;
   if (e.key === 'ArrowRight') step(1);
   if (e.key === 'ArrowLeft') step(-1);
 });

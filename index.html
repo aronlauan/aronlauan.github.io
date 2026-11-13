@@ -47,12 +47,12 @@
       <h2>About</h2>
       <div class="about-grid">
         <div>
-          <p>I'm a data professional with 4+ years of experience across data engineering, analytics, and reporting. I'm strongest in Python and SQL, and I care most about the unglamorous things that make data trustworthy: quality, governance, and pipelines that don't break.</p>
-          <p>At Bloomberg I own ingestion pipelines end to end — from onboarding new providers to the metrics that tell leadership how our data is doing. I also lead AI enablement for two data teams, standardizing how engineers use Claude Code, MCP servers, and hooks in their day-to-day work.</p>
+          <p>I'm a data professional with 4+ years of experience across data engineering and analytics. Always looking to explore new technologies and learn about anything.</p>
+          <p>In real life, I'd prefer to be outside and active. We can chat about that too.</p>
         </div>
         <ul class="facts">
           <li><span>Location</span>New York, NY</li>
-          <li><span>Focus</span>Data Engineering · Data Quality</li>
+          <li><span>Focus</span>Data Engineering · Data Analytics · Data Quality</li>
           <li><span>Education</span>Rutgers University, B.S.</li>
         </ul>
       </div>
@@ -61,92 +61,78 @@
     <!-- EXPERIENCE -->
     <section id="experience" class="container section">
       <h2>Experience</h2>
-      <div class="tl-head">
-        <p class="exp-intro">Where I've been and when it was.</p>
-        <div class="tl-nav" hidden>
-          <button type="button" class="tl-btn" data-dir="-1" aria-label="Scroll back in time">‹</button>
-          <button type="button" class="tl-btn" data-dir="1" aria-label="Scroll toward now">›</button>
-        </div>
-      </div>
+      <p class="exp-intro">Where I've been and when it was.</p>
 
-      <!-- Horizontal timeline: one grid column per month, oldest on the left. Career sits above the
-           year bar, education below. script.js places each group and card by data-start / data-end. -->
-      <div class="tl-scroll" tabindex="0" aria-label="Experience timeline, oldest to newest">
-        <div class="tl">
+      <!-- Vertical timeline, newest at the top: career on the left of the line, education on the right.
+           On desktop each item sits in a grid row (--row) so things that happened at the same time line up. -->
+      <div class="vt">
+        <span class="vt-head vt-career" aria-hidden="true">Career</span>
+        <span class="you-are-here" aria-hidden="true">You are here</span>
+        <span class="vt-head vt-edu" aria-hidden="true">Education</span>
+        <span class="vt-spine" aria-hidden="true"></span>
 
-          <section class="group lane-career" data-zone="bloomberg" data-start="2022-08" data-end="now">
-            <header class="group-head"><h3>Bloomberg LP</h3><span>Aug 2022 – Now</span></header>
-            <article class="tl-card current" data-start="2025-07" data-end="now">
-              <h4>Senior Data Management Professional, Data Engineer</h4>
-              <p class="when">Jul 2025 — Present</p>
-              <div class="pages">
-                <ul class="page active">
-                  <li>Engineered and maintain production ETL pipelines integrating datasets from 6+ external providers into client-facing data products.</li>
-                  <li>Built production Python microservices that transform, validate, and load data across enterprise ingestion pipelines, handling datasets of 1M+ records.</li>
-                  <li>Oversee department-wide AI enablement, standardizing skills, MCPs, and hooks for 2 data teams.</li>
-                </ul>
-                <ul class="page">
-                  <li>Led data quality initiatives across accuracy, completeness, consistency, and timeliness — reducing operational defects and improving pipeline reliability.</li>
-                  <li>Designed quarterly "State of Data" reports that automatically derive key product metrics (completeness, timeliness, breadth) for management.</li>
-                </ul>
-                <ul class="page">
-                  <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
-                  <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
-                </ul>
-                <ul class="page">
-                  <li><strong>Product Universe Index Generation:</strong> reusable ingestion frameworks that generate and onboard indices for specific product universes, with profiling and validation built in.</li>
-                  <li><strong>Pipeline Analytics Dashboard:</strong> utilities that turn pipeline logs into operational metrics, surfacing failure patterns and onboarding performance by provider.</li>
-                  <li><strong>Automated Config Generation:</strong> tooling that generates the JSON configs feeding pipeline microservices, using Claude Code and internal MCP servers.</li>
-                </ul>
-              </div>
-              <div class="card-foot">
-                <div class="pager" hidden>
-                  <button type="button" class="pager-btn" data-step="-1" aria-label="Previous highlights">‹</button>
-                  <span class="pager-count" aria-live="polite">1 / 4</span>
-                  <button type="button" class="pager-btn" data-step="1" aria-label="Next highlights">›</button>
-                </div>
-                <div class="tags"><span>Python</span><span>SQL</span><span>AWS</span><span>Superset</span><span>Claude Code</span></div>
-              </div>
-            </article>
-            <article class="tl-card" data-start="2022-08" data-end="2025-07">
-              <h4>Data Engineer</h4>
-              <p class="when">Aug 2022 — Jul 2025</p>
-              <p>Joined Bloomberg my first summer after Rutgers. My first exposure to data engineering.</p>
-            </article>
-          </section>
+        <!-- Both Bloomberg roles share one company panel -->
+        <section class="vt-group vt-career" data-zone="bloomberg" style="--row: 2; --span: 3">
+          <header class="vt-group-head"><h3>Bloomberg LP</h3><span>Aug 2022 – Now</span></header>
+          <article class="vt-card current">
+            <h4>Senior Data Management Professional, Data Engineer</h4>
+            <p class="when stamp">Jul 2025 — Present</p>
+                  <div class="pages">
+                    <ul class="page active">
+                      <li>Engineered and maintain production ETL pipelines integrating datasets from 6+ external providers into client-facing data products.</li>
+                      <li>Built production Python microservices that transform, validate, and load data across enterprise ingestion pipelines, handling datasets of 1M+ records.</li>
+                      <li>Oversee department-wide AI enablement, standardizing skills, MCPs, and hooks for 2 data teams.</li>
+                    </ul>
+                    <ul class="page">
+                      <li>Led data quality initiatives across accuracy, completeness, consistency, and timeliness — reducing operational defects and improving pipeline reliability.</li>
+                      <li>Designed quarterly "State of Data" reports that automatically derive key product metrics (completeness, timeliness, breadth) for management.</li>
+                    </ul>
+                    <ul class="page">
+                      <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
+                      <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
+                    </ul>
+                    <ul class="page">
+                      <li><strong>Product Universe Index Generation:</strong> reusable ingestion frameworks that generate and onboard indices for specific product universes, with profiling and validation built in.</li>
+                      <li><strong>Pipeline Analytics Dashboard:</strong> utilities that turn pipeline logs into operational metrics, surfacing failure patterns and onboarding performance by provider.</li>
+                      <li><strong>Automated Config Generation:</strong> tooling that generates the JSON configs feeding pipeline microservices, using Claude Code and internal MCP servers.</li>
+                    </ul>
+                  </div>
+                  <div class="card-foot">
+                    <div class="pager" hidden>
+                      <button type="button" class="pager-btn" data-step="-1" aria-label="Previous highlights">‹</button>
+                      <span class="pager-count" aria-live="polite">1 / 4</span>
+                      <button type="button" class="pager-btn" data-step="1" aria-label="Next highlights">›</button>
+                    </div>
+                    <div class="tags"><span>Python</span><span>SQL</span><span>AWS</span><span>Superset</span><span>Claude Code</span></div>
+                  </div>
+          </article>
+          <article class="vt-card">
+            <h4>Data Engineer</h4>
+            <p class="when stamp">Aug 2022 — Jul 2025</p>
+            <p>Joined Bloomberg my first summer after Rutgers. My first exposure to data engineering.</p>
+          </article>
+        </section>
 
-          <section class="group lane-career" data-zone="chubb" data-start="2021-06" data-end="2021-08" data-min="11">
-            <header class="group-head"><h3>Chubb</h3><span>Summer 2021</span></header>
-            <article class="tl-card" data-start="2021-06" data-end="2021-08" data-min="11">
-              <h4>Data Analyst Intern</h4>
-              <p class="when">Jun 2021 — Aug 2021</p>
-              <p>My first internship. Learned about the more technical side of data professions. Found out that the technical side is what I liked.</p>
-            </article>
-          </section>
+        <article class="vt-card vt-career" data-zone="chubb" style="--row: 5">
+          <p class="org">Chubb</p>
+          <h4>Data Analyst Intern</h4>
+          <p class="when stamp">Jun 2021 — Aug 2021</p>
+          <p>My first internship. Learned about the more technical side of data professions. Found out that the technical side is what I liked.</p>
+        </article>
 
-          <section class="group lane-career" data-zone="pools" data-start="2018-05" data-end="2019-08">
-            <header class="group-head"><h3>American Pools</h3><span>May 2018 – Aug 2019</span></header>
-            <article class="tl-card" data-start="2018-05" data-end="2019-08">
-              <h4>Head Lifeguard</h4>
-              <p class="when">May 2018 — Aug 2019</p>
-              <p>Might be the best job I've ever had.</p>
-            </article>
-          </section>
+        <article class="vt-card vt-edu" data-zone="rutgers" style="--row: 5; --span: 2">
+          <p class="org">Rutgers University</p>
+          <h4>B.S. Business Analytics &amp; Information Technology</h4>
+          <p class="when stamp">2018 — 2022</p>
+          <p>Enrolled in the Rutgers Business School for undergrad, but wasn't even sure what business was.</p>
+        </article>
 
-          <div class="tl-years" aria-hidden="true">
-            <span class="you-are-here">You are here</span>
-          </div>
-
-
-          <section class="group lane-edu" data-zone="rutgers" data-start="2018-09" data-end="2022-05">
-            <header class="group-head"><h3>Rutgers University</h3><span>2018 – 2022</span></header>
-            <article class="tl-card" data-start="2018-09" data-end="2022-05">
-              <h4>B.S. Business Analytics &amp; Information Technology</h4>
-              <p class="when">2018 — 2022</p>
-              <p>Enrolled in the Rutgers Business School for undergrad, but wasn't even sure what business was.</p>
-            </article>
-          </section>
-        </div>
+        <article class="vt-card vt-career" data-zone="pools" style="--row: 6">
+          <p class="org">American Pools</p>
+          <h4>Head Lifeguard</h4>
+          <p class="when stamp">May 2018 — Aug 2019</p>
+          <p>Might be the best job I've ever had.</p>
+        </article>
       </div>
     </section>
 
