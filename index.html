@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aron Lauan — Data Engineer</title>
+  <meta name="description" content="Aron Lauan — Data Engineer in New York building production ETL pipelines, data quality frameworks, and BI dashboards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo">AL</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero container">
+      <p class="eyebrow">Hi, I'm</p>
+      <h1>Aron Lauan</h1>
+      <p class="lead">Data Engineer at <strong>Bloomberg</strong>. I build production ETL pipelines, data quality frameworks, and BI dashboards that turn raw provider data into reliable, client-ready products. Based in New York.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View my work</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+      </div>
+      <dl class="stats">
+        <div><dt>4+</dt><dd>years in data</dd></div>
+        <div><dt>6+</dt><dd>external data providers integrated</dd></div>
+        <div><dt>1M+</dt><dd>records processed &amp; validated</dd></div>
+        <div><dt>70K</dt><dd>annual dashboard users supported</dd></div>
+      </dl>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="container section">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div>
+          <p>I'm a data professional with 4+ years of experience across data engineering, analytics, and reporting. I'm strongest in Python and SQL, and I care most about the unglamorous things that make data trustworthy: quality, governance, and pipelines that don't break.</p>
+          <p>At Bloomberg I own ingestion pipelines end to end — from onboarding new providers to the metrics that tell leadership how our data is doing. I also lead AI enablement for two data teams, standardizing how engineers use Claude Code, MCP servers, and hooks in their day-to-day work.</p>
+        </div>
+        <ul class="facts">
+          <li><span>Location</span>New York, NY</li>
+          <li><span>Focus</span>Data Engineering · Data Quality</li>
+          <li><span>Education</span>Rutgers University, B.S.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="container section">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li>
+          <div class="when">Aug 2022 — Present</div>
+          <div>
+            <h3>Data Engineer · <span class="org">Bloomberg LP</span></h3>
+            <ul>
+              <li>Engineered and maintain production ETL pipelines integrating datasets from 6+ external providers into client-facing data products.</li>
+              <li>Built production Python microservices that transform, validate, and load data across enterprise ingestion pipelines, handling datasets of 1M+ records.</li>
+              <li>Led data quality initiatives across accuracy, completeness, consistency, and timeliness — reducing operational defects and improving pipeline reliability.</li>
+              <li>Designed quarterly "State of Data" reports that automatically derive key product metrics (completeness, timeliness, breadth) for management.</li>
+              <li>Own data operations for a high-traffic dashboard serving 70,000+ annual users.</li>
+              <li>Oversee department-wide AI enablement, standardizing skills, MCPs, and hooks for 2 data teams.</li>
+              <li>Bridge 2 Product Managers and 10 engineers, translating technical and product details to keep teams aligned.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="when">2018 — 2022</div>
+          <div>
+            <h3>B.S. Business Analytics &amp; Information Technology · <span class="org">Rutgers University</span></h3>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="container section">
+      <h2>Key technical work</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Product Universe Index Generation</h3>
+          <p>Led development of reusable ingestion frameworks that generate and onboard indices reflecting specific product universes for client-facing workflows. Data profiling and validation improved scalability, reliability, and onboarding accuracy.</p>
+          <div class="tags"><span>Python</span><span>Pandas</span><span>SQL</span><span>AWS</span><span>Schema Design</span></div>
+        </article>
+        <article class="card">
+          <h3>Pipeline Analytics Dashboard</h3>
+          <p>Built analytics utilities that aggregate pipeline logs into operational metrics for product and engineering teams, plus reporting workflows that surface failure patterns and measure onboarding performance by provider.</p>
+          <div class="tags"><span>Python</span><span>SQL</span><span>Apache Superset</span><span>REST APIs</span><span>Humio</span></div>
+        </article>
+        <article class="card">
+          <h3>Automated Config Generation</h3>
+          <p>Developed tooling that generates unique JSON configurations feeding custom microservices across data pipelines, using Claude Code and internal MCP servers to bring context to code safely and efficiently.</p>
+          <div class="tags"><span>Python</span><span>Claude Code</span><span>MCP Servers</span><span>Great Expectations</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="container section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div><h3>Languages</h3><p>Python (advanced) · SQL</p></div>
+        <div><h3>Data Engineering</h3><p>ETL · Data Pipelines · Data Modeling · Schema Design · Data Governance · Data Quality</p></div>
+        <div><h3>Analytics &amp; BI</h3><p>Apache Superset · Data Visualization · Business Intelligence · Operational Metrics · KPI Reporting</p></div>
+        <div><h3>Tools &amp; Platforms</h3><p>AWS · Git / GitHub · Jupyter · Python Microservices · CI/CD · Jira · REST APIs · Claude Code</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container section contact">
+      <h2>Let's talk</h2>
+      <p>Open to conversations about data engineering roles and projects. Email is the fastest way to reach me.</p>
+      <a class="btn primary" href="mailto:aronnlauan@gmail.com">aronnlauan@gmail.com</a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/aronlauan/" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- Add your GitHub: <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub</a> -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© <span id="year"></span> Aron Lauan</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
